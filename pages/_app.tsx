@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
 import { ThemeProvider } from 'styled-components';
@@ -5,8 +6,14 @@ import { ThemeProvider } from 'styled-components';
 import { Layout } from '@components';
 import { GlobalStyle, theme } from '@styles';
 
+import 'styles/global.css';
+
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
+    <Head>
+      <title>NextJS Blog</title>
+    </Head>
+
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Layout>
