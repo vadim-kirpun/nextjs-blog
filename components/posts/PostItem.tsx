@@ -2,7 +2,7 @@ import { memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { IPost } from '@types';
+import type { IPost } from '@types';
 
 import { ListItem, ImageWrapper, Content } from './styles/PostItem';
 

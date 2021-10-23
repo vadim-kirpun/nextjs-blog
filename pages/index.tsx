@@ -1,5 +1,5 @@
 import { Hero, FeaturedPosts } from '@modules/home-page';
-import { IPost } from '@types';
+import type { IPost } from '@types';
 
 const posts: IPost[] = [
   {

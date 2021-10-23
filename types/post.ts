@@ -5,3 +5,7 @@ export interface IPost {
   date: string;
   slug: string;
 }
+
+export interface PostsProps {
+  posts: IPost[];
+}

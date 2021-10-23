@@ -1,19 +1,13 @@
 import { memo } from 'react';
 
-import { IPost } from '@types';
-import { PostsGrid } from '@components';
+import type { PostsProps } from '@types';
+import { ContentWrapper, PostsGrid, Title } from '@components';
 
-import { Wrapper } from './styles/FeaturedPosts';
-
-interface Props {
-  posts: IPost[];
-}
-
-const FeaturedPosts = ({ posts }: Props) => (
-  <Wrapper>
-    <h2>Featured Posts</h2>
+const FeaturedPosts = ({ posts }: PostsProps) => (
+  <ContentWrapper>
+    <Title>Featured Posts</Title>
     <PostsGrid posts={posts} />
-  </Wrapper>
+  </ContentWrapper>
 );
 
 export default memo(FeaturedPosts);

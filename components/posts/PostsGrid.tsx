@@ -1,15 +1,11 @@
 import { memo } from 'react';
 
-import { IPost } from '@types';
+import type { PostsProps } from '@types';
 
 import PostItem from './PostItem';
 import { UnorderedList } from './styles/PostsGrid';
 
-interface Props {
-  posts: IPost[];
-}
-
-const PostsGrid = ({ posts }: Props) => (
+const PostsGrid = ({ posts }: PostsProps) => (
   <UnorderedList>
     {posts.map((post) => (
       <PostItem key={post.slug} post={post} />
