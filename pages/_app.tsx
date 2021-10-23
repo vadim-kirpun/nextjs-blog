@@ -4,8 +4,8 @@ import type { AppProps } from 'next/app';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>
-    <GlobalStyle />
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Component {...pageProps} />
     </ThemeProvider>
