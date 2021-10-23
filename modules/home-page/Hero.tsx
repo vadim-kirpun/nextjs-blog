@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { Wrapper, ImageWrapper } from './styles/Hero';
 
 const Hero = () => (
