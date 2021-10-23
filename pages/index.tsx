@@ -1,5 +1,3 @@
-import type { NextPage } from 'next';
+const HomePage = () => <div />;
 
-const Home: NextPage = () => <div />;
-
-export default Home;
+export default HomePage;
