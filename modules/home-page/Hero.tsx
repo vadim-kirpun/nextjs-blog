@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Image from 'next/image';
 
 import { Wrapper, ImageWrapper } from './styles/Hero';
@@ -22,4 +23,4 @@ const Hero = () => (
   </Wrapper>
 );
 
-export default Hero;
+export default memo(Hero);

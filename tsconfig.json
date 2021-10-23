@@ -15,9 +15,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
+      "@types": ["types/"],
       "@styles": ["styles/"],
-      "@components": ["components/"],
       "@modules/*": ["modules/*"],
+      "@components": ["components/"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
