@@ -1,21 +1,22 @@
-import { Hero, FeaturedPosts } from '@modules/home-page';
-import type { IPost } from '@types';
+import { ContentWrapper, PostsGrid, Title } from '@components';
+import { Hero } from '@modules/home-page';
+import type { PostsProps } from '@types';
+import { getFeaturedPosts } from '@lib';
 
-const posts: IPost[] = [
-  {
-    title: 'Getting Started with NextJS',
-    image: 'getting-started-nextjs.jpg',
-    excerpt: 'NextJS is a React framework for production.',
-    date: '1996-07-13',
-    slug: 'getting-started-with-next-js',
-  },
-];
-
-const HomePage = () => (
+const HomePage = ({ posts }: PostsProps) => (
   <>
     <Hero />
-    <FeaturedPosts posts={posts} />
+
+    <ContentWrapper>
+      <Title>Featured Posts</Title>
+      <PostsGrid posts={posts} />
+    </ContentWrapper>
   </>
 );
+
+export const getStaticProps = async () => ({
+  props: { posts: getFeaturedPosts() },
+  revalidate: 60,
+});
 
 export default HomePage;

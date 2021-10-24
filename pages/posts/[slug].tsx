@@ -1,24 +1,36 @@
 import ReactMarkdown from 'react-markdown';
 
-import { Wrapper, PostHeader } from '@modules/post-details';
+import { getPostData, getPostsFiles, removeExtension } from '@lib';
+import { PostHeader, Wrapper } from '@modules/post-details';
+import type { PostProps } from '@types';
 
-const DUMMY_POST = {
-  title: 'Getting Started with NextJS',
-  image: 'getting-started-nextjs.jpg',
-  date: '1996-07-13',
-  slug: 'getting-started-with-next-js',
-  content: '# This is a first post',
-};
+const PostDetailsPage = ({ post }: PostProps) => {
+  const { content, image, slug, title } = post;
 
-const PostDetailsPage = () => {
-  const imagePath = `/images/posts/${DUMMY_POST.slug}/${DUMMY_POST.image}`;
+  const imagePath = `/images/posts/${slug}/${image}`;
 
   return (
     <Wrapper>
-      <PostHeader title={DUMMY_POST.title} image={imagePath} />
-      <ReactMarkdown>{DUMMY_POST.content}</ReactMarkdown>
+      <PostHeader title={title} image={imagePath} />
+      <ReactMarkdown>{content}</ReactMarkdown>
     </Wrapper>
   );
+};
+
+interface Params {
+  params: { slug: string };
+}
+
+export const getStaticProps = async ({ params }: Params) => ({
+  props: { post: getPostData(params.slug) },
+});
+
+export const getStaticPaths = () => {
+  const paths = getPostsFiles().map((fileName) => ({
+    params: { slug: removeExtension(fileName) },
+  }));
+
+  return { paths, fallback: 'blocking' };
 };
 
 export default PostDetailsPage;

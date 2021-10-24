@@ -1,11 +1,10 @@
 import { memo } from 'react';
 
+import type { IPost } from '@types';
+
 import { Header, PostTitle, StyledImage } from './styles/PostHeader';
 
-interface Props {
-  title: string;
-  image: string;
-}
+type Props = Pick<IPost, 'title' | 'image'>;
 
 const PostHeader = ({ title, image }: Props) => (
   <Header>

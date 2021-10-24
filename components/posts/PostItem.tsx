@@ -2,15 +2,11 @@ import { memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import type { IPost } from '@types';
+import type { PostProps } from '@types';
 
 import { ListItem, ImageWrapper, Content } from './styles/PostItem';
 
-interface Props {
-  post: IPost;
-}
-
-const PostItem = ({ post }: Props) => {
+const PostItem = ({ post }: PostProps) => {
   const { title, image, excerpt, date, slug } = post;
 
   const formattedDate = new Date(date).toLocaleDateString('en-EN', {

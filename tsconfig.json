@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
+      "@lib": ["lib/"],
       "@types": ["types/"],
       "@styles": ["styles/"],
       "@modules/*": ["modules/*"],
