@@ -1,4 +1,7 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import type { FormEvent } from 'react';
+
+import axios from 'axios';
 
 import {
   Form,
@@ -8,39 +11,81 @@ import {
   StyledWrapper,
 } from './styles/ContactForm';
 
-const ContactForm = () => (
-  <StyledWrapper>
-    <h1>How can I help you?</h1>
+interface SendMessageResponse {
+  message: string;
+}
 
-    <Form>
-      <Controls>
+const ContactForm = () => {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+
+  const sendMessageHandler = async (event: FormEvent) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await axios.post<SendMessageResponse>('/api/contact', {
+        email,
+        name,
+        message,
+      });
+      console.log('%c data.message =', 'color: lightblue', data.message);
+    } catch (error) {
+      console.log('error --> ', error);
+    }
+  };
+
+  return (
+    <StyledWrapper>
+      <h1>How can I help you?</h1>
+
+      <Form onSubmit={sendMessageHandler}>
+        <Controls>
+          <Control>
+            <label htmlFor='email'>
+              Your email
+              <input
+                required
+                id='email'
+                type='email'
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
+              />
+            </label>
+          </Control>
+
+          <Control>
+            <label htmlFor='name'>
+              Your name
+              <input
+                required
+                id='name'
+                type='text'
+                value={name}
+                onChange={({ target }) => setName(target.value)}
+              />
+            </label>
+          </Control>
+        </Controls>
+
         <Control>
-          <label htmlFor='email'>
-            Your email
-            <input type='email' id='email' />
+          <label htmlFor='message'>
+            Your message
+            <textarea
+              rows={5}
+              id='message'
+              value={message}
+              onChange={({ target }) => setMessage(target.value)}
+            />
           </label>
         </Control>
 
-        <Control>
-          <label htmlFor='password'>
-            Password
-            <input type='password' id='password' />
-          </label>
-        </Control>
-      </Controls>
-
-      <Control>
-        <label htmlFor='message'>
-          Your message
-          <textarea id='message' rows={5} />
-        </label>
-      </Control>
-
-      <Actions>
-        <button type='submit'>Send message</button>
-      </Actions>
-    </Form>
-  </StyledWrapper>
-);
+        <Actions>
+          <button type='submit'>Send message</button>
+        </Actions>
+      </Form>
+    </StyledWrapper>
+  );
+};
 
 export default memo(ContactForm);
