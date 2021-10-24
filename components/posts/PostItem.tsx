@@ -2,6 +2,7 @@ import { memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { getImagePath } from '@lib';
 import type { PostProps } from '@types';
 
 import { ListItem, ImageWrapper, Content } from './styles/PostItem';
@@ -21,7 +22,7 @@ const PostItem = ({ post }: PostProps) => {
         <a>
           <ImageWrapper>
             <Image
-              src={`/images/posts/${slug}/${image}`}
+              src={getImagePath(slug, image)}
               layout='responsive'
               alt={title}
               width={300}

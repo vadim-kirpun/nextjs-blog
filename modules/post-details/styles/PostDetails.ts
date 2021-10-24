@@ -18,9 +18,3 @@ export const Wrapper = styled.article`
     padding: ${(props) => props.theme.size[8]};
   }
 `;
-
-export const ImageWrapper = styled.div`
-  margin: ${(props) => props.theme.size[4]} auto;
-  width: 100%;
-  max-width: 600px;
-`;

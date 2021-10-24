@@ -1,7 +1,7 @@
 import { ContentWrapper, PostsGrid, Title } from '@components';
+import { getFeaturedPosts } from '@lib/posts-util';
 import { Hero } from '@modules/home-page';
 import type { PostsProps } from '@types';
-import { getFeaturedPosts } from '@lib';
 
 const HomePage = ({ posts }: PostsProps) => (
   <>

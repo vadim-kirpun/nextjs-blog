@@ -34,6 +34,4 @@ export const PostTitle = styled.h1`
 
 export const StyledImage = styled(Image)`
   object-fit: cover;
-  width: 200px;
-  height: 120px;
 `;

@@ -16,6 +16,7 @@
     "jsx": "preserve",
     "paths": {
       "@lib": ["lib/"],
+      "@lib/*": ["lib/*"],
       "@types": ["types/"],
       "@styles": ["styles/"],
       "@modules/*": ["modules/*"],

@@ -1,43 +1,15 @@
-import ReactMarkdown from 'react-markdown';
-import Image from 'next/image';
-
-import { PostHeader, Wrapper, ImageWrapper } from '@modules/post-details';
-import { getPostData, getPostsFiles, removeExtension } from '@lib';
+import { PostBody, PostHeader, Wrapper } from '@modules/post-details';
+import { getPostData, getPostsFiles } from '@lib/posts-util';
+import { getImagePath, removeExtension } from '@lib';
 import type { PostProps } from '@types';
 
 const PostDetailsPage = ({ post }: PostProps) => {
   const { content, image, slug, title } = post;
 
-  const imagePath = `/images/posts/${slug}/${image}`;
-
   return (
     <Wrapper>
-      <PostHeader title={title} image={imagePath} />
-
-      <ReactMarkdown
-        components={{
-          p({ node, children }) {
-            const { tagName, properties }: any = node.children[0];
-
-            if (tagName === 'img') {
-              const { src, alt } = properties;
-              return (
-                <ImageWrapper>
-                  <Image
-                    src={`/images/posts/${slug}/${src}`}
-                    alt={alt}
-                    width={600}
-                    height={300}
-                  />
-                </ImageWrapper>
-              );
-            }
-            return <p>{children}</p>;
-          },
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+      <PostHeader title={title} image={getImagePath(slug, image)} />
+      <PostBody content={content} slug={slug} />
     </Wrapper>
   );
 };
