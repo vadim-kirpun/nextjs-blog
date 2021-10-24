@@ -2,8 +2,10 @@ import { memo, PropsWithChildren } from 'react';
 
 import { Wrapper } from './styles/ContentWrapper';
 
-const ContentWrapper = ({ children }: PropsWithChildren<{}>) => (
-  <Wrapper>{children}</Wrapper>
+type Props = PropsWithChildren<{ className?: string }>;
+
+const ContentWrapper = ({ children, className = '' }: Props) => (
+  <Wrapper className={className}>{children}</Wrapper>
 );
 
 export default memo(ContentWrapper);
