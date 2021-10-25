@@ -7,3 +7,4 @@ export { default as PostsGrid } from './posts/PostsGrid';
 
 // ui
 export { default as Title } from './ui/Title';
+export { default as Notification } from './ui/Notification';
