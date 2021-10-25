@@ -1,13 +1,20 @@
+import Head from 'next/head';
+
 import { PostBody, PostHeader, Wrapper } from '@modules/post-details';
 import { getImagePath, removeExtension } from '@helpers';
 import { getPostData, getPostsFiles } from '@lib';
 import type { PostProps } from '@types';
 
 const PostDetailsPage = ({ post }: PostProps) => {
-  const { content, image, slug, title } = post;
+  const { content, image, slug, excerpt, title } = post;
 
   return (
     <Wrapper>
+      <Head>
+        <title>{title}</title>
+        <meta name='description' content={excerpt} />
+      </Head>
+
       <PostHeader title={title} image={getImagePath(slug, image)} />
       <PostBody content={content} slug={slug} />
     </Wrapper>
