@@ -24,7 +24,7 @@ export type ErrorResponse = {
 
 const useNotification = (
   status: NotificationStatus | null,
-  errorMessage: string = ''
+  errorMessage = ''
 ) => {
   type Variants = Record<
     NotificationStatus,

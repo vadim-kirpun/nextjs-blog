@@ -19,7 +19,7 @@ const AllPostsPage = ({ posts }: PostsProps) => (
   </ContentWrapper>
 );
 
-export const getStaticProps = async () => ({
+export const getStaticProps = () => ({
   props: { posts: getAllPosts() },
   revalidate: 60,
 });

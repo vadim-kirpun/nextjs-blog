@@ -21,7 +21,7 @@ const HomePage = ({ posts }: PostsProps) => (
   </>
 );
 
-export const getStaticProps = async () => ({
+export const getStaticProps = () => ({
   props: { posts: getFeaturedPosts() },
   revalidate: 60,
 });

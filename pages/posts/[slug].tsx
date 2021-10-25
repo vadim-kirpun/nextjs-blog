@@ -25,7 +25,7 @@ interface Params {
   params: { slug: string };
 }
 
-export const getStaticProps = async ({ params }: Params) => ({
+export const getStaticProps = ({ params }: Params) => ({
   props: { post: getPostData(params.slug) },
 });
 
