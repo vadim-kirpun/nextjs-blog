@@ -1,6 +1,6 @@
 import { ContentWrapper, PostsGrid, Title } from '@components';
-import { getAllPosts } from '@lib/posts-util';
 import type { PostsProps } from '@types';
+import { getAllPosts } from '@lib';
 
 const AllPostsPage = ({ posts }: PostsProps) => (
   <ContentWrapper>

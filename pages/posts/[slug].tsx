@@ -1,6 +1,6 @@
 import { PostBody, PostHeader, Wrapper } from '@modules/post-details';
-import { getPostData, getPostsFiles } from '@lib/posts-util';
-import { getImagePath, removeExtension } from '@lib';
+import { getImagePath, removeExtension } from '@helpers';
+import { getPostData, getPostsFiles } from '@lib';
 import type { PostProps } from '@types';
 
 const PostDetailsPage = ({ post }: PostProps) => {

@@ -3,8 +3,7 @@ import matter from 'gray-matter';
 import { join } from 'path';
 
 import type { IPost } from '@types';
-
-import { removeExtension } from './common';
+import { removeExtension } from '@helpers';
 
 const postsDirectory = join(process.cwd(), 'posts');
 

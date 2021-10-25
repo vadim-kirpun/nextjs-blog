@@ -2,7 +2,7 @@ import { memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { getImagePath } from '@lib';
+import { getImagePath } from '@helpers';
 import type { PostProps } from '@types';
 
 import { ListItem, ImageWrapper, Content } from './styles/PostItem';
