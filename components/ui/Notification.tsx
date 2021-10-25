@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import ReactDOM from 'react-dom';
 
 import { NotificationStatus } from '@types';
 
@@ -21,11 +22,12 @@ const Notification = (props: Props) => {
 
   const NotificationWrapper = wrappers[status];
 
-  return (
+  return ReactDOM.createPortal(
     <NotificationWrapper>
       <h2>{title}</h2>
       <p>{message}</p>
-    </NotificationWrapper>
+    </NotificationWrapper>,
+    document.getElementById('notification')!
   );
 };
 
